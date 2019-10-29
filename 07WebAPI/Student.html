@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Student Web API Demo</h1>
+            <p class="lead">A Web Appliction</p>
+            <p><a href="#" class="btn btn-primary">Learn More...</a></p>
+        </div>
+        <form id="form">
+            <div class="form-group">
+                <label for="id" class="col-form-label">學號</label>
+                <input id="Text1" name="學號 " type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-form-label">姓名</label>
+                <input id="name" name="姓名" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="gender" class="col-form-label">性別</label>
+                <input id="gender" name="性別 " type="text" class="form-control" />
+            </div>
+            <div class="form-group"> 
+                <label for="birthday" class="col-form-label">生日</label>
+                <input id="birthday" name="生日" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="tel" class="col-form-label">電話</label>
+                <input id="tel" name="電話" type="text" class="form-control" />
+            </div>
+            <input id="btn" type="button" value="新增" class="btn btn-primary btn-block"/>
+        </form>
+
+    </div>
+    <ul id="list" class="list-group  list-group-flush  "></ul>
+
+    <div class="container">
+        <table id="course" class="table table-bordered text-center table-striped table-hover"></table>
+    </div>   
+    <script src="Scripts/jquery-3.0.0.min.js"></script>
+    <script>
+        $.ajax({
+            type:"Get",
+            url: "http://localhost:50282/api/Students",
+            success: function (data) {
+
+                console.log(data);
+                
+                data.forEach(function (item) {
+                    item.學號
+                    $('#list').append("<li class='list-group-item bg-light border-primary'>學號:"+item.學號+"  姓名:" +item.姓名+"  性別:" +item.性別+"  生日:" +item.生日+"  電話:" +item.電話+"</li>");
+                });
+                
+            }
+        });
+    </script>
+</body>
+</html>
