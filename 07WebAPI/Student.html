@@ -11,12 +11,14 @@
         <div class="jumbotron">
             <h1>Student Web API Demo</h1>
             <p class="lead">A Web Appliction</p>
-            <p><a href="#" class="btn btn-primary">Learn More...</a></p>
+            <p>
+                <a href="#" class="btn btn-primary">Learn More...</a>
+            </p>
         </div>
-        <form id="form">
+        <form id="forml">
             <div class="form-group">
                 <label for="id" class="col-form-label">學號</label>
-                <input id="Text1" name="學號 " type="text" class="form-control" />
+                <input id="id" name="學號 " type="text" class="form-control" />
             </div>
             <div class="form-group">
                 <label for="name" class="col-form-label">姓名</label>
@@ -26,7 +28,7 @@
                 <label for="gender" class="col-form-label">性別</label>
                 <input id="gender" name="性別 " type="text" class="form-control" />
             </div>
-            <div class="form-group"> 
+            <div class="form-group">
                 <label for="birthday" class="col-form-label">生日</label>
                 <input id="birthday" name="生日" type="text" class="form-control" />
             </div>
@@ -34,30 +36,93 @@
                 <label for="tel" class="col-form-label">電話</label>
                 <input id="tel" name="電話" type="text" class="form-control" />
             </div>
-            <input id="btn" type="button" value="新增" class="btn btn-primary btn-block"/>
+            <input id="btnAdd" type="button" value="新增" class="btn btn-primary btn-block" />
+            <input id="btnList" type="button" value="列出所有資料" class="btn btn-primary btn-block" />
+            <input id="btnGet" type="button" value="查詢" class="btn btn-primary btn-block" />
+            <input id="btnUpdate" type="button" value="修改" class="btn btn-primary btn-block" />
+            <input id="btnDelete" type="button" value="刪除" class="btn btn-primary btn-block" />
         </form>
 
-    </div>
-    <ul id="list" class="list-group  list-group-flush  "></ul>
 
-    <div class="container">
-        <table id="course" class="table table-bordered text-center table-striped table-hover"></table>
-    </div>   
+        <ul id="list" class="list-group  list-group-flush  "></ul>
+
+    </div>
+
+
+
     <script src="Scripts/jquery-3.0.0.min.js"></script>
     <script>
-        $.ajax({
-            type:"Get",
-            url: "http://localhost:50282/api/Students",
-            success: function (data) {
 
-                console.log(data);
-                
-                data.forEach(function (item) {
-                    item.學號
-                    $('#list').append("<li class='list-group-item bg-light border-primary'>學號:"+item.學號+"  姓名:" +item.姓名+"  性別:" +item.性別+"  生日:" +item.生日+"  電話:" +item.電話+"</li>");
-                });
-                
-            }
+        //新增
+        $('#btnAdd').click(function () {
+            $.ajax({
+                type: "Post",
+                url: "http://localhost:50282/api/Student",
+                data: $('#forml').serialize()
+
+            });
+        });
+
+        //修改
+        $('#btnUpdate').click(function () {
+            $.ajax({
+                type: "Put",
+                url: "http://localhost:50282/api/Student/" + $('#id').val(),
+                data: $('#forml').serialize(),
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+        });
+
+        //刪除
+        $('#btnDelete').click(function () {
+            $.ajax({
+                type: "Delete",
+                url: "http://localhost:50282/api/Student/" + $('#id').val(),
+
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+        });
+
+        //列出所有資料
+        $('#btnList').click(function () {
+            $('#list').empty();
+            $.ajax({
+                type: "Get",
+                url: "http://localhost:50282/api/Student",
+                success: function (data) {
+
+                    console.log(data);
+
+                    data.forEach(function (item) {
+
+                        $('#list').append("<li class='list-group-item bg-light border-primary'>學號:" + item.學號 + "  姓名:" + item.姓名 + "  性別:" + item.性別 + "  生日:" + item.生日 + "  電話:" + item.電話 + "</li>");
+                    });
+
+                }
+            });
+        });
+
+
+        //查詢某筆資料
+        $('#btnGet').click(function () {
+            $.ajax({
+                type: "Get",
+                url: "http://localhost:50282/api/Student/" + $('#id').val(),
+                success: function (data) {
+
+                    $('#name').val(data.姓名);
+                    $('#gender').val(data.性別);
+                    $('#tel').val(data.電話);
+                    $('#birthday').val(data.生日);
+
+
+
+                }
+            });
         });
     </script>
 </body>

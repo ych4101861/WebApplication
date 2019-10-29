@@ -1,0 +1,55 @@
+﻿<div class="jumbotron">
+    <h1>Chat</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+<div class="row">
+
+    <div class="col-md-4">
+        <fieldset>
+            <legend>進入聊天室</legend>
+            <p><input id="username" name="username" type="text" class="form-control" /></p>
+            <input id="btnConnect" type="button" value="進入聊天" class="btn btn-primary" />
+            <hr />
+            <p><input id="message" name="message" type="text" class="form-control" /></p>
+            <input id="btnSend" type="button" value="送出" class="btn btn-success" />
+        </fieldset>
+    </div>
+
+    <div class="col-md-8">
+        <ul id="output" style="height:400px;overflow:auto;border:1px solid"></ul>
+    </div>
+
+</div>
+
+    @section scripts{
+        <script>
+            $('#btnConnect').click(function () {
+                var url = "ws://localhost:50340/api/Chat?username=" + $('#username').val();
+                var ws = new WebSocket(url);
+                console.log(ws);
+
+
+                ws.onopen = function () {
+                    ws.send("已進入聊天室!!");
+                }
+
+                $('#btnSend').click(function () {
+                    ws.send($('#message').val());
+
+                });
+
+                ws.onmessage = function (e) {
+                    $('#output').append($('<li>').text(e.data));
+                    console.log(e.data);
+                }
+
+                ws.onerror = function () {
+                    alert('有錯誤!!');
+                }
+            });
+
+
+        </script>
+    }
+
