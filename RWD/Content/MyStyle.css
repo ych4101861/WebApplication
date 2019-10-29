@@ -1,0 +1,13 @@
+﻿
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(216, 216, 243, 0.05);
+}
+
+.table-bordered {
+    border: 3px dotted #0f316d;
+}
+
+    .table-bordered th,
+    .table-bordered td {
+        border: 5px solid #dee2e6;
+    }

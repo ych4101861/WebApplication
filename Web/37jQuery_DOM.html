@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+<h1>
+    666666
+</h1>
+    <div id="container">
+
+
+    </div>
+    <h1>
+        8888888
+    </h1>
+    <script src="Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        //$('#container').html('<h1>2222</h1>').append('<h2>333333</h2>')       
+        $('#container').append('<h2>333333</h2>')
+        //append:
+        $('#container').html('<h1>2222</h1>').after('<h2>333333</h2>')
+        //after:加在後面的兄弟節點，同一階層
+        $('#container').html('<h1>2222</h1>')
+        $('#container+h1').after('<h2>333333</h2>')
+
+    </script>
+
+</body>
+</html>

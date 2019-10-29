@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #counter {
+        height:1000px;
+        width:800px;
+        position:relative;
+        }
+        #title{
+            border:5px solid white;
+            background-color:gray;
+            color:azure;
+            font-size:25pt;
+            text-align:center;
+            width:500px;
+            font-weight:900;
+            position:absolute;
+            top:650px;
+            left:500px;
+            border-radius:10px;
+        }
+        #photo {
+        position:absolute;
+        left:-1100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="counter">        
+        <img src="Koala.jpg" id="photo"/>
+        <p id="title">Koala</p>
+    </div>
+    <script src="Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $('#title').hide();
+
+        $('#photo').animate({ 'left': '+=1200' }, 2000, 'swing', function () {
+            $('#title').fadeIn(2000, function () {
+                $('#title,#photo').hide(2000);
+            });
+        });
+
+
+
+
+    </script>
+</body>
+</html>

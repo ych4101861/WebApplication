@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>合法身分證字號判斷</title>
+    <style>
+        .container {
+            width: 1000px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="@Url.Action("Index")" method="post">
+            <input name="id" type="text" />
+            <input id="Submit1" type="submit" value="送出" />
+
+        </form>
+        @{
+            <h2>@ViewBag.Result</h2>
+        }
+    </div>
+</body>
+</html>

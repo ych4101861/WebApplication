@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <link href="PlayerSheet.css" rel="stylesheet" />
+
+</head>
+<body>
+    <audio id="audio">
+        <source id="song" type="audio/mpeg" />
+    </audio>
+    <div id="ControlPanel">
+        <select id="music"></select>
+        <hr color="#498eaf" />
+        <span id="play">4</span>
+        <span id="stop"><</span>
+        <span id="prevsong">9</span>
+        <span id="prevtime">7</span>
+        <span id="nexttime">8</span>
+        <span id="nextsong">:</span>
+        <span id="muted">V</span>
+        <span id="loop">q</span>
+        <span id="random">s</span>
+        <span id="allloop">`</span>
+        <span id="songbook">@</span>
+
+        <hr color="#498eaf" />
+
+        <!--<div id="settime">
+        <div id="progress"></div>
+    </div>-->
+        <input id="progress" type="range"  value="0" />
+
+        <input id="vol" type="range" min="0" max="100" value="50" />
+        <input id="volM" type="button" value="-" />
+        <input id="volP" type="button" value="+" />
+        <input id="volValue" type="text" readonly />
+        <hr color="#498eaf" />
+        <div id="duration">00:00 / 00:00</div>
+        <marquee id="info">➺➺➺請按播放鈕➺➺➺</marquee>
+        <div id="info2"></div>
+    </div>
+
+    <div id="book" class="hidden">
+        <div id="Sbook">
+            <div title="music/Christopher - Heartbeat.mp3">Christopher-Heartbeat</div>
+            <div title="music/Christopher - Irony.mp3">Christopher-Irony</div>
+            <div title="music/Christopher - My Heart.mp3">Christopher-My Heart</div>
+            <div title="music/Coldplay-everglow.mp3">Coldplay-everglow</div>
+            <div title="music/Ed Sheeran - Perfect.mp3">Ed Sheeran-Perfect</div>
+            <div title="music/Troye Sivan-Strawberries and Cigarettes.mp3">Troye Sivan-Strawberries and Cigarettes</div>
+            <div title="music/Kodaline - High Hopes .mp3">Kodaline-High Hopes</div>
+            <div title="music/Stratovarius - The Land Of Ice And Snow.mp3">Stratovarius-The Land Of Ice And Snow</div>
+            <div title="music/Vampire Weekend - Step .mp3">Vampire Weekend-Step</div>
+            <div title="music/We The Kings - Sad Song .mp3">We The Kings-Sad Song</div>
+            <div title="music/Stratovarius-Forever  .mp3">Stratovarius-Forever</div>
+            <div title="music/Alex & Sierra - Little Do You Know .mp3">Alex & Sierra-Little Do You Know</div>
+            <div title="music/Paul KimEvery Day, Every Moment.mp3">Paul KimEvery Day, Every Moment</div>
+            <div title="music/Boys Like Girls - Two Is Better Than One.mp3">Boys Like Girls - Two Is Better Than One</div>
+        </div>
+
+        <div id="Tbook"></div>
+
+        <input id="btnUpdateMusic" type="button" value="更新歌單" />
+    </div>
+    
+        <script src="PlayerScript.js"></script>
+   
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        div {
+            color:red;
+        }
+        div p {
+             color:blue;
+        }/*div下有p標籤都會變色*/
+        div>p {
+             color:yellow;
+        }/*div的子節點(也就是下一階層)為p標籤*/
+        div+p {
+             color:lawngreen;
+        }/*div的下一標籤為p(非子節點)*/
+        div~p {
+             color:#bb88d0;
+        }/*div的上下標籤為p(非子節點)*/
+
+
+    </style>
+</head>
+<body>
+    <div>
+        <p>JavaScript</p>
+    </div>
+
+    <span>
+        jQuery
+    </span>
+    <span>
+        <p>HTML</p>
+    </span>
+    <p>
+        ASP.net MVC
+    </p>
+    <div>
+        <p>CSS3</p>
+        <b><p>ASP.net</p></b>
+        <span>PHP</span>
+        <span>
+            <p>SQL Server</p>
+        </span>
+    </div>
+    <p>
+        JAVA
+    </p>
+</body>
+</html>

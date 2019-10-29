@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #tb1 {
+            border:3px solid;
+            width:90%;
+            margin:auto;                
+        }
+            #tb1 > thead > tr {
+            background-color:darkblue;
+            color:gold;
+            }
+
+        #tb1>tbody>tr:nth-child(2n+1) {                        
+            background-color:#f7f0c8;
+        }
+
+            #tb1 > tbody > tr:hover {
+            background-color:gold;
+            color:darkblue;
+            }
+
+
+    </style>
+</head>
+<body>
+    <table id="tb1"></table>
+
+
+
+    <script src="Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $.ajax({
+            type: 'get',
+            url: 'https://ptx.transportdata.tw/MOTC/v2/Air/FIDS/Airport/Departure?$orderby=ScheduleDepartureTime%20&$top=50&$format=JSON',
+            format: 'json',
+            success: function (data) {                
+                    $('#tb1').append("<thead><tr><td>航班日期</td><td>航機班號</td><td>表訂出發時間</td><td>實際出發時間</td><td>航班屬性狀態</td></tr></thead><tbody>");
+
+                for (i = 0; i < data.length; i++)
+                    $('#tb1').append("<tr><td>"+data[i].FlightDate +"</td><td>"+data[i].FlightNumber+"</td><td>"+data[i].ScheduleDepartureTime +"</td><td>"+data[i].ActualDepartureTime+"</td><td>"+data[i].DepartureRemark+"</td></tr>");
+                $('#tb1').append("</tbody>");
+            },
+            error: function () {
+                alert('失敗!');
+            }
+        });
+
+    </script>
+
+</body>
+</html>

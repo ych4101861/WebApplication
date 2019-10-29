@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .col1 {
+            background-color: aquamarine;
+        }
+
+        .col2 {
+            background-color: brown;
+        }
+
+        .col3 {
+            background-color: cadetblue;
+        }
+
+        .col4 {
+            background-color: chartreuse;
+        }
+
+        .col5 {
+            background-color: cyan;
+        }
+
+        .col6 {
+            background-color: darkgray;
+        }
+
+        .col7 {
+            background-color: darkseagreen;
+        }
+
+        .col8 {
+            background-color: gold;
+        }
+
+        .col9 {
+            background-color: fuchsia;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="row ">
+            <div class="col3 col-md-4 ">第1欄</div>
+            <div class="col4 col-md-4 ">第2欄</div>
+            <div class="col5 col-md-4 ">第3欄</div>
+        </div>
+        <hr />
+        <div class="row ">
+            <div class="col3 col-md-4 ">第1欄,不參與排序</div>
+            <div class="col4 col-md-4 order-12">第2欄,排在最面</div>
+            <div class="col5 col-md-4 order-0">第3欄,排在最前面</div>
+        </div>
+        <hr />
+        <div class="row ">
+            <div class="col3 col-md-4 ">第1欄</div>
+            <div class="col4 col-md-4 ml-auto">第2欄(ml-auto)</div>
+        </div>
+        <hr />
+        <div class="row ">
+            <div class="col3 col-md-3 ml-auto">第1欄(ml-auto)</div>
+            <div class="col4 col-md-3 ml-auto">第2欄(ml-auto)</div>
+        </div>
+        <hr />
+        <div class="row ">
+            <div class="col3 col-md-auto mr-auto">第1欄(mr-auto)</div>
+            <div class="col4 col-md-auto">第2欄dddddddddddddddddddddddd</div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #ControlPanel > span {
+            cursor: pointer;
+            font-family: Webdings;
+            border: 1px solid;
+            font-size: 3rem;
+            box-shadow: 3px 3px 7px black;
+        }
+    </style>
+
+</head>
+<body>
+    <audio id="audio" controls="controls">
+        //autoplay在行動裝置沒用
+        <source id="song" type="audio/mp3" src="music/through%20the%20night.mp3" />
+
+
+    </audio>
+    <div id="ControlPanel">
+        <select id="music">
+            <option value="music/through%20the%20night.mp3">IU-夜信</option>
+            <option value="music/Ed%20Sheeran%20-%20Perfect%20(Official%20Music%20Video).mp3" type="audio/mp3">Ed Sheeran-Perfect</option>
+            <option value="music/everglow-single-version-official-video.mp3">coldplay-everglow</option>
+
+        </select>
+        <span id="play">4</span>
+        <!--<span id="pause">;</span>-->
+        <span id="stop"><</span>
+        <span id="prevtime">7</span>
+        <span id="nexttime">8</span>
+
+
+    </div>
+
+    <script>
+        //取的document object
+        var audio = document.getElementById("audio");
+        var ControlPanel = document.getElementById("ControlPanel");
+        var music = document.getElementById("music");
+        var song = document.getElementById("song");
+        //var play = document.getElementById("play");
+        //var pause = document.getElementById("pause");
+        //var stop = document.getElementById("stop");
+        //var prevtime = document.getElementById("prevtime");
+        //var nexttime = document.getElementById("nexttime");
+         
+        //加入事件監聽器(裡面的函數不可加參數)
+        ControlPanel.addEventListener("click", objEvent);
+        music.addEventListener("change",changeMusic );
+        //play.addEventListener("click", playMusic);
+        //pause.addEventListener("click", pauseMusic);
+        //stop.addEventListener("click", stopMusic);
+        //prevtime.addEventListener("click", function () {timeChange(false) });
+        //nexttime.addEventListener("click", function () {timeChange(true) });
+
+        //各項功能
+        function objEvent(evt) {
+            console.log(evt.target.id);//click觸發的標的物是誰
+            obj = evt.target;
+            //id = evt.target.id;
+            switch (obj.id) {
+                case "play":
+                    playMusic(obj);
+                    break;
+                case "pause":
+                    pauseMusic(obj);
+                    break;
+                case "stop":
+                    stopMusic(obj);
+                    break;
+                case "prevtime":
+                    timeChange(false);
+                    break;
+                case "nexttime":
+                    timeChange(true);
+                    break;
+
+            }
+
+            function playMusic(obj) {
+                 obj.innerText = ";";
+            obj.id = "pause";
+            audio.play();
+
+            }
+            function pauseMusic(obj) {
+                 obj.innerText = "4";
+            obj.id = "play";
+            audio.pause();
+
+            }
+            function stopMusic(obj) {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+            function timeChange(flag) {//prevtime、nexttime
+                if (flag)
+                    audio.currentTime += 10;
+                else
+                    audio.currentTime -= 10;
+            }
+            function changeMusic() {
+                index = music.selectedIndex;
+                song.scr = music.options[index].value;
+                audio.load();
+                console.log(song.src);
+            }
+
+
+     </script>
+</body>
+</html>

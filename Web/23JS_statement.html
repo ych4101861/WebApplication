@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    
+    <script>
+        var a = 10;
+        a = 20;//指定運算，a=20
+        a = a + 10;//指定運算，a=20+10，a=30
+        a += 5;//指定運算，a=30+5，a=35
+
+        a -= 8;//指定運算，a=35-8，a=27
+        a *= 10;//指定運算，a=27*10，a=270
+        a /= 27;//指定運算，a=270/27，a=10
+
+        a++;//a=a+1,a+=1,a=11
+        document.write(a + "<hr>");
+        ////////////////////////////////////
+        var a = 10, b = 20 //想辦法a變b
+        var c;
+        c = a;//c=10;暫存a
+        a = b;//a=20
+        b = c;//b=10;
+        document.write("a=" + a + ",b=" + b);
+        /////////////////////////////////////
+        var a = 10, b = 20
+        a = a + b;//10+20=30=a
+        b = a - b;//30-20=10=b
+        a = a - b;//30-10=20=a
+        document.write("a=" + a + ",b=" + b);//這算法，當數字大時，會失去精準度
+        /////////////////////////////////////
+        var strName = "jack", intNumber = 12345, blnGender = true;
+        var result;
+
+        result = strname + blnGender;
+        document.write
+
+        ////////////////////////////////////////////
+
+        document.write(parseInt(3.2) + "<br>");
+        document.write(parseInt("3.2") + "<br>");
+        document.write(parseInt(3dsb) + "<br>");
+        document.write(parseInt("3page") + "<br>");
+        document.write(parseInt(18ff,16) + "<br>");
+        document.write(parseInt(18ff, 8) + "<br>");
+        document.write(parseInt(18ff, 10) + "<br>");
+        document.write(parseInt("ff1234") + "<br>");
+        document.write(parseInt("shsfs") + "<hr>");
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

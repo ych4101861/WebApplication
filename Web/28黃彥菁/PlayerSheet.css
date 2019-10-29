@@ -1,0 +1,186 @@
+﻿body {
+}
+@font-face {
+    font-family: 'Myfont';
+    src: url('fonts/webdings.eot') format('embedded-opentype');
+}
+
+@font-face {
+    font-family: 'Myfont';
+    src: url('fonts/webdings.svg') format('svg');
+}
+
+@font-face {
+    font-family: 'Myfont';
+    src: url('fonts/webdings.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Myfont';
+    src: url('fonts/webdings.woff') format('woff');
+}
+
+.lineThrough {
+    text-decoration: line-through;
+}
+
+body {
+    background-color: #e4dace;
+    font-size: 16pt;
+}
+
+#ControlPanel {
+    width: 900px;
+    border: 5px outset #377d9e;
+    margin: auto;
+    text-align: center;
+    background-color: #498eaf;
+    border-radius: 10px;
+    box-shadow: 20px;
+}
+
+    #ControlPanel > span {
+        cursor: pointer;
+        font-family: Myfont;
+        font-size: 3rem;
+        border: 2px outset;
+        box-shadow: 0px 0px 7px black;
+        border-radius: 50%;
+        background-color: #e5bb4b;
+    }
+
+        #ControlPanel > span:hover {
+            color: honeydew;
+            position: relative;
+            top: 2px;
+            left: 2px;
+        }
+
+#music, #info, #duration {
+    width: inherit;
+    background-color: #631f16;
+    color: peachpuff;
+    font-size: 16pt;
+    font-family: Arial;
+    border-radius: 5px;
+}
+
+#info2 {
+    color: azure;
+}
+
+#volValue {
+    width: 25px;
+    background-color: lemonchiffon;
+    color: dimgray;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#settime {
+    background-color: lightsteelblue;
+    height: 12px;
+}
+
+#progress {
+    background-color: #AA0000;
+    height: 12px;
+}
+
+#vol {
+    width: 80%;
+    height: 8px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    border: 2px solid;
+    background-color: seashell;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+    #vol::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 15px;
+        height: 20px;
+        background-color: #847072;
+        border: 2px white outset;
+        border-radius: 5px;
+    }
+
+#progress {
+    width: 80%;
+    height: 6px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    background-color: #AAAAAA;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+    #progress::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 3px;
+        height: 6px;
+        background-color: #AA0000;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+        #progress::-webkit-slider-thumb:hover {
+            width: 22px;
+            height: 22px;
+            background-color: #AA0000;
+            border-radius: 10px;
+            transition: 2s;
+        }
+
+#volM, #volP {
+    border-radius: 8px;
+    background-color: aliceblue;
+}
+
+#book {
+    margin: auto;
+    width: 900px;
+}
+
+    #book > div {
+        border: 1px groove;
+        width: 448px;
+        height: 300px;
+        overflow: auto;
+        float: left;
+        cursor: copy;
+        background-color: seashell;
+        border-radius: 7px;
+        color: dimgrey;
+    }
+
+#btnUpdateMusic {
+    clear: both;
+    width: 80%;
+    background-color: darksalmon;
+    font-size: 18px;
+    text-align: center;
+    border: 3px groove white outset;
+    color: dimgray;
+    font-weight: 900;
+    border-radius: 10px;
+    margin-bottom: 280px;
+    margin-left: 90px;
+}
+
+    #btnUpdateMusic:hover {
+        color: gainsboro;
+        position: relative;
+        top: 2px;
+        left: 2px;
+    }
+
+.hidden {
+    display: none;
+}

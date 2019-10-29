@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #tb1 {
+            
+            width: 90%;
+            margin: auto;
+        }
+
+            #tb1 > thead > tr {
+                background-color: #0d521b;
+                color: lavender;
+            }
+
+            #tb1 > tbody > tr:nth-child(2n+1) {
+                background-color: #c7c7c7;
+            }
+
+            #tb1 > tbody > tr:hover {
+                background-color: #808080;
+                color: lavender;
+            }
+    </style>
+</head>
+<body>
+    <table id="tb1"></table>
+
+    <script src="Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $.ajax({
+            type: 'get',
+            url: 'MyData_hw.json',
+            format: 'json',
+            success: function (data) {
+                $('#tb1').append("<thead><tr><td>農藥名稱</td><td>農藥英文名稱</td><td>成分含量</td><td>劑型</td><td>廠商名稱</td><td>中文商品名</td></tr></thead><tbody>")
+
+                for (i = 0; i < data.length; i++)
+                    $('#tb1').append("<tr><td>" + data[i].Name + "</td><td>" + data[i].EnName + "</td><td>" + data[i].CompositPercentage + "</td><td>" + data[i].PesticidesForm + "</td><td>" + data[i].CompanyName + "</td><td>" + data[i].ProductName + "</td></tr>")
+
+                $('#tb1').append("</tbody>")
+            },
+            error: function () {
+                alert('失敗!');
+            }
+
+        });
+
+    </script>
+</body>
+</html>

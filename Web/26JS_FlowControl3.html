@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        //for回圈，已知道要執行幾次
+        //for (let i = 1; i <= 6; i++) {
+        //    document.write("<h"+i+">您好</h"+i+">");
+        //}
+        //document.write("<hr>");
+
+        //////for巢狀回圈
+        //for (let j = 1; j <= 100; j++) {
+        //    for (let i = 1; i <= 6; i++) {
+        //        document.write("<h"+i+">您好</h"+i+">");
+        //    }
+        //    }
+        //document.write("<hr>");
+        //////////////////////////////無法600圈
+        //let result = "", i = 1;
+        //for (let j = 1; j <= 100; j++) {
+        //    result += "<h" + i + ">您好</h" + i + ">";
+        //    i++;
+        //    if (i == 7) {
+        //        //console.log(result);
+        //        i = 1;
+        //        document.write(result);
+        ////        result = "";
+        //       }
+        //    //console.log("j="+j);
+        //    //console.log("i="+i);
+        //    //console.log(result);
+        //    }
+        ///////////////////////////////////////
+        //for (let j = 1; j <= 100; j++) {
+        //    document.write("<h1>您好</h1> <h2>您好</h2> <h3>您好</h3> <h4>您好</h4> <h5>您好</h5> <h6>您好</h6>");
+        //    //console.log("j=" + j);
+        //}
+        //////////////////////////////////////////
+        var total = 0, c = 0;//列數
+        let result = "", i = 1;
+        for (let j = 1; j <=  84; j++) {
+            result += "<h" + i + ">您好</h" + i + ">";
+            i++;
+            c++;
+            //console.log(result);
+            if (i == 7) {
+                i = 1;
+                document.write(result);
+                console.log("列數:"+(total+=c));
+            }
+        }
+
+        ////////////////////////////正三角形星星
+
+        //for (i = 1; i <= 20; i++) {//跑列數
+        //    for (j = 1; j <= i; j++) {//跑星星數
+        //        document.write("*");
+        //    }
+        //    document.write("<br>");
+        //}
+        //document.write("<hr>")
+        ////////////////////////////////倒三角形星星
+
+        //for (i = 1; i <= 20; i++) {//跑列數
+        //    for (j = i; j <= 20; j++) {//跑星星數
+        //        document.write("*");
+        //    }
+        //    document.write("<br>");
+        //}
+        //document.write("<hr>")
+        ////////////////不用回圈正三角形星星
+        //let a = "";
+        //for (i = 1; i <= 20; i++) {
+        //    a += "*";
+        //    //console.log(a);
+        //    document.write(a);
+        //    document.write("<br>");
+        //}
+        //document.write("<hr>")
+        ////////////////////////
+     
+               
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

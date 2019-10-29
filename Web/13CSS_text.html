@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        /*h1,span{
+            border:1px solid
+        }*/
+
+    </style>
+</head>
+<body>
+    <h1>welcome my homepage</h1>
+    <h1 style="text-align:center">welcome my homepage</h1>
+    <h1 style="text-align:right">welcome my homepage</h1>
+    <span style="text-align:right;width:100%">welcome my homepage</span>
+
+    <hr />
+
+    <h1 style=" width:800px">welcome my homepage</h1>
+    <h1 style="width:80%">welcome my homepage</h1>
+    <h1 style="background-color:aquamarine">welcome my homepage</h1>
+
+    <hr />
+
+    <p style=" width:800px;text-align:center">welcome my homepage</p>
+    <p style="width:80%;text-align:center">welcome my homepage</p>
+    <p style="background-color:aquamarine;text-align:center">welcome my homepage</p>
+
+    <hr />
+
+    <a href="https://www.google.com.tw/" style="text-decoration:none;font-size:24pt;font-weight:900;cursor: none">google!!</a>
+    <h3 style="text-decoration:line-through">30000000</h3>
+    <h1 style="font-size:48pt;color:blueviolet;font-family:forte">30</h1>
+
+
+    <hr />
+
+    <h1 style="cursor:pointer;text-decoration: underline">Welcome My Website</h1>
+
+    <hr />
+    <h1 style="text-transform:uppercase">Welcome My Homepage</h1>
+    <h1 style="text-transform:lowercase">Welcome My Homepage</h1>
+    <h1 style="text-transform:capitalize">welcome my homepage</h1>
+    <h1 style="text-transform:capitalize">WELCOME MY HOMEPAGE</h1>
+    <hr />
+
+    <h1 style="font-size:48px;text-shadow:3px 3px 3px red,5px 5px 5px blueviolet,7px 7px 7px blue">Welcome My Homepage</h1>
+    <h1 style="font-size:48px;box-shadow:3px 3px 3px red,5px 5px 5px blueviolet,7px 7px 7px blue">Welcome My Homepage</h1>
+    <span style="font-size:48px;box-shadow:3px 3px 3px red,5px 5px 5px blueviolet,7px 7px 7px blue">Welcome My Homepage</span>
+
+    <hr />
+    <h1 style="letter-spacing:26pt">welcome my homepage</h1>
+    <h1 style="word-spacing:26pt">welcome my homepage</h1>
+    <h1 style="letter-spacing:26pt">高屏澎東分署</h1>
+    <h1 style="word-spacing:26pt">高屏澎東分署</h1>
+
+    <hr />
+    <input id="btn1" type="button" value="放大" />
+    <input id="btn2" type="button" value="縮小" />
+    <input id="btn3" type="button" value="還原" />
+
+    <p id=" news">
+        鐵是宇宙含量第 6 多的元素，但科學家始終偵測不到
+        根據維基百科的 資料 ，鐵是宇宙中含量第 6 多的元素（僅次於氫、氦、氧、碳、氖），
+        也是宇宙中含量最多的金屬元素。鐵經由恆星的核融合生成，會以氣體的形式存在於恆星內部；
+        它也是組成行星的重要元素，例如地球的地殼，鐵就是含量第 4 多的元素（僅次於氧、矽、鋁）。
+    </p>
+    <script>
+        var btn1 = document.getElementById("btn1");
+        var btn2 = document.getElementById("btn2");
+        var btn3 = document.getElementById("btn3");
+        var news = document.getElementById("news");
+
+        btn1.addEventListener('click', function () {
+            news.style.fontsize="24pt"
+        });
+        btn2.addEventListener('click', function () {
+            news.style.fontsize="8pt"
+        });
+        btn3.addEventListener('click', function () {
+            news.style.fontsize="12pt"
+        });
+
+          
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        //反過來寫
+
+        function MyResever() {
+            let r = "";
+            for (i = Rainbow.length - 1; i >= 0; i--)
+                r += Rainbow[i];
+            return r;
+
+        }
+
+        var Rainbow = new Array("紅", "橙", "黃", "綠", "藍", "靛", "紫");
+        var result = MyResever();
+
+        document.write(result);
+        /////////////////////////////////////////////////////////////////////
+        document.write("<hr>");
+        function MyResever(arrDate) {
+            let r = "";
+            for (i = arrDate.length - 1; i >= 0; i--)
+                r += arrDate[i];
+            return r;
+
+            var Rainbow = new Array("紅", "橙", "黃", "綠", "藍", "靛", "紫");
+            var Friend = new Array("John", "Mark", "Joe");
+
+            var result = MyResever(Rainbow);
+            document.write(result);
+            result = MyResever(Friend);
+            document.write(result);
+            /////////////////////////////////////////////
+            //   //求x與y最大公因數
+            //   document.write("<hr>");
+            //   function gcd(a, b) {
+            //       var k = 0;
+            //       while (a % b != 0) {
+            //           a = b;
+            //           b = k;
+            //       }
+            //       return b;
+            //   }
+            //var x = 16, y = 32;
+            //   document.write(x + "與" + y + "的最大公因數為" + gcd(x, y));
+            //   document.write("<hr>");
+            /////////////////////////////////////////////
+            //進制轉換
+            function toBinary(n) {
+                let r = "", m = 0;
+                while (true) {//無限循環語句
+                    m = n % 2;
+                    n = Math.floor(n / 2);
+                    r += m;
+                    c++;
+
+                    if (n == 0)
+                        break;
+                }
+                console.log(c);
+                return c;
+            }
+            
+            var t = new array(c);
+            c = 0;
+
+                while (true) {
+                    m = n % 2;
+                    n = Math.floor(n / 2);
+                    r += m;
+                    c++;
+
+                    if (n == 0)
+                        break;
+                }
+            
+            MyResever(r)
+            console.log(c);
+            console.log(r);
+            }
+
+         
+
+            var c = 20;
+            toBinary(c);
+            document.write();
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

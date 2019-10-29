@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #ControlPanel > span {
+            cursor: pointer;
+            font-family: Webdings;
+            font-size: 3rem;
+            box-shadow: 3px 3px 7px black;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <audio id="audio" controls="controls">
+        <source id="song" src="music/through%20the%20night.mp3" type="audio/mp3" />
+    </audio>
+
+    <div id="ControlPanel">
+
+        <span id="play">4</span>
+        <span id="pause">;</span>
+        <span id="stop"><</span>
+        <span id="prevtime">7</span>
+        <span id="nexttime">8</span>
+    </div>
+
+    <script>
+        //取的document object
+        var audio = document.getElementById("audio");
+        var ControlPanel = document.getElementById("ControlPanel");
+        var 
+        //var play = document.getElementById("play");
+        //var pause = document.getElementById("pause");
+        //var stop = document.getElementById("stop");
+        //var prevtime = document.getElementById("prevtime");
+        //var nexttime = document.getElementById("nexttime");
+
+        //加入事件監聽器
+        ControlPanel.addEventListener("click", objEvent);
+        //play.addEventListener("click",playMusic);
+        //pause.addEventListener("click", pauseMusic);
+        //stop.addEventListener("click", stopMusic);
+        //prevtime.addEventListener("click", function () {timeChange(false)});
+        //nexttime.addEventListener("click", function () {timeChange(true)});
+
+
+        //各項功能
+        //判斷要執行哪一個功能
+        function objEvent(evt) {
+            console.log(evt.target.id);
+            obj = evt.target;
+            //id = evt.target.id;
+            switch (obj.id) {
+                case "play":
+                    playMusic(obj);
+                    break;
+                case "pause":
+                    pauseMusic(obj);
+                    break;
+                case "stop":
+                    stopMusic();
+                    break;
+                case "prevtime":
+                    timeChange(false);
+                    break;
+                case "nexttime":
+                    timeChange(true);
+                    break;
+            }
+
+        }
+
+
+
+        //播放音樂
+        function playMusic(obj) {
+            audio.play();
+        }
+        //暫停音樂
+        function pauseMusic(obj) {
+            audio.pause();
+        }
+        //停止播放
+        function stopMusic() {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+        //快轉倒轉
+        function timeChange(flag) {
+            if (flag)
+                audio.currentTime += 10
+            else
+                audio.currentTime -= 10
+
+
+
+        }
+
+    </script>
+
+
+
+
+
+</body>
+</html>

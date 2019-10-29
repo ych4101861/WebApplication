@@ -1,0 +1,650 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        @font-face {
+            font-family: 'Myfont';
+            src: url('fonts/webdings.eot') format('embedded-opentype');
+        }
+
+        @font-face {
+            font-family: 'Myfont';
+            src: url('fonts/webdings.svg') format('svg');
+        }
+
+        @font-face {
+            font-family: 'Myfont';
+            src: url('fonts/webdings.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Myfont';
+            src: url('fonts/webdings.woff') format('woff');
+        }
+
+        .lineThrough {
+            text-decoration: line-through;
+        }
+
+        body {
+            background-color: #e4dace;
+            font-size: 16pt;
+        }
+
+        #ControlPanel {
+            width: 900px;
+            border: 5px outset #377d9e;
+            margin: auto;
+            text-align: center;
+            background-color: #498eaf;
+            border-radius: 10px;
+            box-shadow: 20px;
+        }
+
+            #ControlPanel > span {
+                cursor: pointer;
+                font-family: Myfont;
+                font-size: 3rem;
+                border: 2px outset;
+                box-shadow: 0px 0px 7px black;
+                border-radius: 50%;
+                background-color: #e5bb4b;
+            }
+
+                #ControlPanel > span:hover {
+                    color: honeydew;
+                    position: relative;
+                    top: 2px;
+                    left: 2px;
+                }
+
+        #music, #info, #duration {
+            width: inherit;
+            background-color: #631f16;
+            color: peachpuff;
+            font-size: 16pt;
+            font-family: Arial;
+            border-radius: 5px;
+        }
+
+        #info2 {
+            color: azure;
+        }
+
+        #volValue {
+            width: 25px;
+            background-color: lemonchiffon;
+            color: dimgray;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        #settime {
+            background-color: lightsteelblue;
+            height: 12px;
+        }
+
+        #progress {
+            background-color: peachpuff;
+            height: 12px;
+        }
+
+        #vol {
+            width: 80%;
+            height: 8px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            outline: none;
+            border: 2px solid;
+            background-color: seashell;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+            #vol::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                width: 15px;
+                height: 20px;
+                background-color: #847072;
+                border: 2px white outset;
+                border-radius: 5px;
+            }
+            #progress {
+            width: 80%;
+            height:8px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            outline: none;
+            background-color: #bebebe;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor:pointer;
+            
+        }
+            #progress::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                width: 10px;
+                height: 8px;
+                background-color: #930000;
+                border-radius: 5px;
+                transition:1s;
+            }
+            #progress::-webkit-slider-thumb:hover {
+                /*-webkit-appearance: none;
+                -moz-appearance: none;*/
+                width: 18px;
+                height:18px;
+                background-color: #930000;
+                
+                border-radius: 50%;
+                
+            }
+        #volM, #volP {
+            border-radius: 8px;
+            background-color: aliceblue;
+        }
+
+
+
+        #book {
+            margin: auto;
+            width: 900px;
+        }
+
+            #book > div {
+                border: 1px groove;
+                width: 448px;
+                height: 300px;
+                overflow: auto;
+                float: left;
+                cursor: copy;
+                background-color: seashell;
+                border-radius: 7px;
+                color: dimgrey;
+            }
+
+        #btnUpdateMusic {
+            clear: both;
+            width: 80%;
+            background-color: darksalmon;
+            font-size: 18px;
+            text-align: center;
+            border: 3px groove white outset;
+            color: dimgray;
+            font-weight: 900;
+            border-radius: 10px;
+            margin-bottom: 280px;
+            margin-left: 65px;
+        }
+
+            #btnUpdateMusic:hover {
+                color: gainsboro;
+                position: relative;
+                top: 2px;
+                left: 2px;
+            }
+
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <body>
+        <audio id="audio">
+            <source id="song" type="audio/mpeg" />
+        </audio>
+        <div id="ControlPanel">
+            <select id="music"></select>
+            <hr color="#498eaf" />
+            <span id="play">4</span>
+            <span id="stop"><</span>
+            <span id="prevsong">9</span>
+            <span id="prevtime">7</span>
+            <span id="nexttime">8</span>
+            <span id="nextsong">:</span>
+            <span id="muted">V</span>
+            <span id="loop">q</span>
+            <span id="random">s</span>
+            <span id="allloop">`</span>
+            <span id="songbook">@</span>
+
+            <hr color="#498eaf" />
+
+            <!--<div id="settime">
+                <div id="progress"></div>
+            </div>-->
+            <div>
+                <input id="progress" type="range" value="0" />
+            </div>
+
+            <input id="vol" type="range" min="0" max="100" value="50" />
+            <input id="volM" type="button" value="-" />
+            <input id="volP" type="button" value="+" />
+            <input id="volValue" type="text" readonly />
+            <hr color="#498eaf" />
+            <div id="duration">00:00 / 00:00</div>
+            <marquee id="info">請按播放鈕~~~~~</marquee>
+            <div id="info2"></div>
+        </div>
+        <div id="book" class="hidden">
+            <div id="Sbook">
+                <div title="music/Christopher - Heartbeat.mp3">Christopher-Heartbeat</div>
+                <div title="music/Christopher - Irony.mp3">Christopher-Irony</div>
+                <div title="music/Christopher - My Heart.mp3">Christopher-My Heart</div>
+                <div title="music/Coldplay-everglow.mp3">Coldplay-everglow</div>
+                <div title="music/Ed Sheeran - Perfect.mp3">Ed Sheeran-Perfect</div>
+                <div title="music/Troye Sivan-Strawberries and Cigarettes.mp3">Troye Sivan-Strawberries and Cigarettes</div>
+                <div title="music/Kodaline - High Hopes .mp3">Kodaline-High Hopes</div>
+                <div title="music/Stratovarius - The Land Of Ice And Snow.mp3">Stratovarius-The Land Of Ice And Snow</div>
+                <div title="music/Vampire Weekend - Step .mp3">Vampire Weekend-Step</div>
+                <div title="music/We The Kings - Sad Song .mp3">We The Kings-Sad Song</div>
+                <div title="music/Stratovarius-Forever  .mp3">Stratovarius-Forever</div>
+                <div title="music/Avicii - Without you  ft Sandro Cavazza.mp3">Avicii-Without you ft. Sandro Cavazza</div>
+                <div title="music/Alex & Sierra - Little Do You Know .mp3">Alex & Sierra-Little Do You Know</div>
+                <div title="Green Day - 21 Guns .mp3">Green Day-21 Guns</div>
+                <div title="Boys Like Girls - Two Is Better Than One.mp3">Boys Like Girls -Two Is Better Than One</div>
+
+            </div>
+            <div id="Tbook"></div>
+            <input id="btnUpdateMusic" type="button" value="更新歌單" />
+        </div>
+
+
+        <script>
+        //取的document object
+        var audio = document.getElementById("audio");
+        var ControlPanel = document.getElementById("ControlPanel");
+        var music = document.getElementById("music");
+        var song = document.getElementById("song");
+        var duration = document.getElementById("duration");
+        var info = document.getElementById("info");
+        var info2 = document.getElementById("info2");
+        var vol = document.getElementById("vol");
+        var volValue = document.getElementById("volValue");
+        var stop = document.getElementById("stop");
+        var progress = document.getElementById("progress");
+        //var settime = document.getElementById("settime");
+        var Sbook = document.getElementById("Sbook");
+        var Tbook = document.getElementById("Tbook");
+        var btnUpdateMusic = document.getElementById("btnUpdateMusic");
+
+        //var play = document.getElementById("play");
+        //var pause = document.getElementById("pause");
+        //var stop = document.getElementById("stop");
+        //var prevtime = document.getElementById("prevtime");
+        //var nexttime = document.getElementById("nexttime");
+
+        //一開始抓預設的歌
+        defaultSong();
+
+        //加入事件監聽器
+        ControlPanel.addEventListener("click", objEvent);
+        music.addEventListener("change", function () { changeMusic(music.selectedIndex); });
+        vol.addEventListener(browserTest(), function () { volumeChange(1); });
+        progress.addEventListener(browserTest(), setTimeBar);
+        Sbook.addEventListener("dragstart", drag);
+        Tbook.addEventListener("dragover", allowDrop);
+        Tbook.addEventListener("drop", drop);
+
+
+        Tbook.addEventListener("dragstart", drag);
+        Sbook.addEventListener("dragover", allowDrop);
+        Sbook.addEventListener("drop", drop);
+        btnUpdateMusic.addEventListener(browserTest(), updateMusic);
+
+        //play.addEventListener("click",playMusic);
+        //pause.addEventListener("click", pauseMusic);
+        //stop.addEventListener("click", stopMusic);
+        //prevtime.addEventListener("click", function () {timeChange(false)});
+        //nexttime.addEventListener("click", function () {timeChange(true)});
+
+        //瀏覽器偵測
+        function browserTest() {
+            if (navigator.userAgent.search("Chrome") != -1)
+                return "input";
+            else if (navigator.userAgent.search("Firefox") != -1)
+                return "input";
+            else if (navigator.userAgent.search("Opera") != -1)
+                return "input";
+            else
+                return "change";
+        }
+
+
+
+        //各項功能
+        //判斷要執行哪一個功能
+        function objEvent(evt) {
+            console.log(evt.target);
+            obj = evt.target;
+            //id = evt.target.id;
+            switch (obj.id) {
+                case "play":
+                    playMusic(obj);
+                    break;
+                case "pause":
+                    pauseMusic(obj);
+                    break;
+                case "stop":
+                    stopMusic(obj);
+                    break;
+                case "prevtime":
+                    timeChange(false);
+                    break;
+                case "nexttime":
+                    timeChange(true);
+                    break;
+                case "prevsong":
+                    songChange(false);
+                    break;
+                case "nextsong":
+                    songChange(true);
+                    break;
+                case "volM":
+                    volumeChange(3);
+                    break;
+                case "volP":
+                    volumeChange(2);
+                    break;
+                case "muted":
+                    setMuted(obj, audio.muted);
+                    break;
+                //case "loop":
+                //    loopSong();
+                //    break;
+                //case "random":
+                //    randomSong();
+                //    break;
+                //case "allloop":
+                //    allloopSong();
+                //    break;
+                case "loop":
+                case "random":
+                case "allloop":
+                    songStatus(obj);
+                    break;
+                case "songbook":
+                    hidden(obj);
+                    break;
+            }
+        }
+
+        function drag(evt) {
+            evt.dataTransfer.setData("text", evt.target.id);
+            console.log(evt.target.id);
+        }
+
+        function allowDrop(evt) {
+            evt.preventDefault();
+        }
+
+        function drop(evt,obj) {
+            evt.preventDefault();
+            var data = evt.dataTransfer.getData("text");
+            obj.target.appendChild(document.getElementById(data));
+        }
+
+
+        //將歌本的歌讀進下拉式選單中
+        function defaultSong() {
+            for (i = 0; i < Sbook.children.length; i++) {
+                var option = document.createElement("option");
+                var Snode = Sbook.children[i];
+                option.value = Snode.title;
+                option.innerText = Snode.innerText;
+                music.appendChild(option);
+
+                Snode.draggable = true;
+                Snode.id = "song" + (i + 1);
+            }
+            changeMusic(0);
+        }
+
+        //將時間從秒數轉換為幾分幾秒的格式
+        function getTimeFormat(timeSec) {
+            min = Math.floor(timeSec / 60);
+            sec = timeSec % 60;
+            min = min < 10 ? "0" + min : min;
+            sec = sec < 10 ? "0" + sec : sec;
+            return min + ":" + sec;
+        }
+        //取得目前播放時間資訊
+        function getDuration() {
+            songDuration = Math.round(audio.duration);
+            songCurrentTime = Math.round(audio.currentTime);
+
+            //將歌曲時間顯示在面板上
+            duration.innerText = getTimeFormat(songCurrentTime) + " / " + getTimeFormat(songDuration);
+
+            //餵值給進度Bar
+            //progress.style.width = (audio.currentTime / audio.duration * 100) + "%";
+            progress.max = audio.duration;
+            progress.value = audio.currentTime;
+            pb = (audio.currentTime / audio.duration * 100) + "%";
+            progress.style.backgroundImage = "-webkit-linear-gradient(left,#AA0000,#AA0000 " + pb + ",#AAAAAA" + pb + ",#AAAAAA)";
+
+
+            //console.log(progress.style.width);
+            if (songCurrentTime == songDuration) {
+                console.log(songCurrentTime);
+                console.log(songDuration);
+                if (info2.innerText == "單曲循環") {
+                    index = music.selectedIndex;
+                    changeMusic(index);
+                }
+                else if (info2.innerText == "隨機播放") {
+                    index = Math.floor(Math.random() * music.options.length);
+                    changeMusic(index);
+                }
+                else if (info2.innerText == "" && music.selectedIndex == music.options.length - 1) {
+                    stopMusic(stop);
+                }
+                else
+                    songChange(true);
+            }
+            else
+                setTimeout(getDuration,200);
+        }
+        function showInfo(status) {
+            switch (status) {
+                case 1:
+                    info.innerText = "現正播放：" + song.title;
+                    break;
+                case 2:
+                    info.innerText = "音樂暫停";
+                    break;
+                case 3:
+                    info.innerText = "音樂停止";
+                    break;
+            }
+
+        }
+
+
+
+        //播放音樂
+        function playMusic(obj) {
+            console.log(obj);
+            obj.innerText = ";";
+            obj.id = "pause";
+            if (audio.currentTime == 0)
+                audio.load();
+            audio.play();
+            showInfo(1);
+            getDuration();
+        }
+
+        //暫停音樂
+        function pauseMusic(obj) {
+            console.log(obj);
+            obj.innerText = "4";
+            obj.id = "play";
+            audio.pause();
+            showInfo(2);
+        }
+
+        //停止播放
+        function stopMusic(obj) {
+            pauseMusic(obj.previousElementSibling);
+            audio.currentTime = 0;
+            showInfo(3);
+        }
+
+        //快轉倒轉
+        function timeChange(flag) {
+            if (flag)
+                audio.currentTime += 10;
+            else
+                audio.currentTime -= 10;
+        }
+
+        //歌曲更換
+        function changeMusic(index) {
+            song.src = music.options[index].value;
+            song.title = music.options[index].innerText;
+            music.options[index].selected = true;
+            audio.currentTime = 0;
+            if (audio.paused == false) {
+                console.log(audio.paused);
+                playMusic(music.nextElementSibling.nextElementSibling);
+            }
+
+            console.log(song.src);
+        }
+
+
+        // 上一曲下一曲
+        function songChange(flag) {
+            index = music.selectedIndex;
+            len = music.options.length;
+            if (flag) {
+                if (index < len - 1)
+                    index++;
+                else
+                    index = 0;
+            }
+            else {
+                if (index > 0)
+                    index--;
+                else
+                    index = len - 1;
+            }
+            console.log(index);
+            changeMusic(index);
+        }
+
+
+
+        //音量設定
+        volumeChange(1);  //設定初始音量
+        function volumeChange(flag) {
+            if (flag == 2)
+                vol.value++;
+            else if (flag == 3)
+                vol.value--;
+
+            volValue.value = vol.value;
+            audio.volume = volValue.value / 100;
+
+        }
+
+
+        //靜音設定
+        function setMuted(obj, status) {
+            if (status) {
+                audio.muted = false;
+                obj.className = "";
+            }
+            else {
+                audio.muted = true;
+                obj.className = "lineThrough";
+
+            }
+        }
+
+        ////單曲循環
+        //function loopSong() {
+        //    if (info2.innerText == "單曲循環")
+        //        info2.innerText = "";
+        //    else
+        //        info2.innerText = "單曲循環";
+        //}
+        ////隨機播放
+        //function randomSong() {
+        //    if (info2.innerText == "隨機播放")
+        //        info2.innerText = "";
+        //    else
+        //        info2.innerText = "隨機播放";
+        //}
+        ////全曲循環
+        //function allloopSong() {
+        //    if (info2.innerText == "全曲循環")
+        //        info2.innerText = "";
+        //    else
+        //        info2.innerText = "全曲循環";
+        //}
+
+        ////播放狀態判斷
+        function songStatus(obj) {
+            if (obj.id == info2.title) {
+                info2.innerText = "";
+                info2.title = "";
+            }
+            else {
+                switch (obj.id) {
+                    case "loop":
+                        info2.innerText = "單曲循環";
+                        break;
+                    case "random":
+                        info2.innerText = "隨機播放"
+                        break;
+                    case "allloop":
+                        info2.innerText = "全曲循環"
+                        break;
+                }
+                info2.title = obj.id;
+            }
+
+        }
+
+
+        //跳到指定時間播放
+        function setTimeBar(evt) {
+            //audio.currentTime = (evt.offsetX / ControlPanel.clientWidth) * audio.duration;
+            audio.currentTime = progress.value;
+            console.log(audio.currentTime);
+
+        }
+
+        function updateMusic() {
+            for (i = music.children.length - 1; i >= 0; i--) {
+                music.removeChild(music.children[i]);
+            }
+
+            for (i = 0; i < Tbook.children.length; i++) {
+                var option = document.createElement("option");
+                var Tnode = Tbook.children[i];
+                option.value = Tnode.title;
+                option.innerText = Tnode.innerText;
+                music.appendChild(option);
+            }
+            songChange(0);
+        }
+        function hidden() {
+            if (book.className == "hidden") {
+                book.className = "";
+
+            }
+            else
+                book.className = "hidden";
+        }
+        </script>
+
+    </body>
+</html>

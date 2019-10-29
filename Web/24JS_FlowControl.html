@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <script>
+        let a = 1;
+        const PI = 3.1415926;
+        let Pi = 3.1415926;
+
+        //PI = 230;//這行會報錯
+        document.write("PI=" + PI + "<br>");
+        Pi = 230;
+        document.write("Pi=" + Pi + "<br>");
+
+        //條件控制        if (true) {            a = 123;            document.write("a=" + a + ",")        }        document.write("a=" + a)
+        //二選一條件控制
+        var strGender="女"
+        if (strGender == "男") {
+            document.write("先生您好");
+            document.write("先生您好歡迎使用");
+        }
+        else {
+            document.write("小姐您好");
+            document.write("小姐您好歡迎使用");
+        }
+        document.write("<hr>")
+        //多條件控制
+        var intpaytype = 3;//1.信用卡付款 2.現金 3.轉帳 4.貨到付款
+
+        if (intpaytype == "1") {
+            document.write("信用卡付款 ");
+        }
+        else if (intpaytype == "2") {
+            document.write("現金付款 ");
+        }
+        else if (intpaytype == "3") {
+             document.write("轉帳付款 ");
+        }
+        else if (intpaytype == "4") {
+             document.write("貨到付款");
+        }
+        document.write("<hr>");
+        ///////////////////////////////////////
+      //區分等第
+        //90分以上為優等, 80~89分為甲等, 70~79分為乙等
+        //60~69分為丙等, 60分以下為丁等
+
+        var score = 85;
+
+        //用if來判斷score的值(我的作法)
+        if (score >= 90)
+            document.write("優等");        else if (score >= 80) {
+            document.write("甲等 ");        }        else if (score >= 70) {
+            document.write("乙等 ");        }        else if (score >= 60) {
+            document.write("丙等 ");        }        else {            document.write("丁等 ");
+        };
+
+        //用if來判斷score的值(老師的第一種作法)
+        if (score >= 90 && score <= 100)//全部的if都會算完，時間複雜度最大
+            document.write("優等");
+        if (score >= 80 && score <90)
+            document.write("甲等");
+        if (score >= 70 && score <80)
+            document.write("乙等");
+        if (score >= 60 && score <= 70)
+            document.write("丙等");
+        if (score >= 0 && score <= 60)
+            document.write("丁等");
+
+        //用if來判斷score的值(老師的第二種作法)
+        if (score >= 90 && score <= 100)//算3次，score >= 90，score <= 100，score >= 90 && score <= 100  
+            document.write("優等");
+        else if (score >= 80 && score <90)
+            document.write("甲等");
+        else if (score >= 70 && score <80)
+            document.write("乙等");
+        else if (score >= 60 && score <= 70)
+            document.write("丙等");
+        else if (score >= 0 && score <= 60)
+            document.write("丁等");
+        //用if來判斷score的值(老師的第三種作法)//時間複雜度最小，但要按照順序排放，因他是從上到下運算
+          if (score >= 90)
+            document.write("優等");        else if (score >= 80) 
+            document.write("甲等 ");        else if (score >= 70) 
+            document.write("乙等 ");        else if (score >= 60) 
+            document.write("丙等 ");        else             document.write("丁等 ");
+          
+
+    </script>
+
+</body>
+</html>

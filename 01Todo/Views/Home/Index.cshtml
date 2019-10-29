@@ -1,0 +1,131 @@
+﻿@model IEnumerable<_01Todo.Models.ToDo>
+
+<style>
+    #table1 {
+        width: 100%;
+    }
+
+        #table1 > thead th {
+            border: 1px solid gray;
+        }
+
+        #table1 td, #table1 > tbody th {
+            border: 1px solid gray;
+        }
+
+        /*#table1 > tbody > tr:nth-child(2n+1) {
+            background-color: #fbbebe;
+        }*/
+
+    #btn span {
+        cursor: pointer;
+    }
+
+    .pink {
+        background-color: #fbbebe;
+    }
+
+    .blue {
+        background-color: #a4ccf7;
+    }
+
+    .yellow {
+        background-color: #fffcbc;
+    }
+</style>
+@{
+    ViewBag.Title = "待辦事項";
+}
+
+<h2>待辦事項</h2>
+
+<p>
+    <a href="/Home/Create">新增待辦事項</a>
+    @*@Html.ActionLink("新增待辦事項", "Create")*@
+</p>
+<div id="btn">
+    <span id="pink">　</span>
+    <span id="blue">　</span>
+    <span id="yellow">　</span>
+</div>
+
+<table id="table1">
+    <thead>
+        <tr>
+            <th>
+                序號
+            </th>
+            <th>
+                標題
+                @*@Html.DisplayNameFor(model => model.Title)*@
+            </th>
+            <th>
+                圖示
+                @*@Html.DisplayNameFor(model => model.Image)*@
+            </th>
+            <th>
+                結案日
+                @*@Html.DisplayNameFor(model => model.Date)*@
+            </th>
+            <th>管理</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>
+                @item.ID
+            </th>
+            <td>
+                @item.Title
+                @*@Html.DisplayFor(modelItem => item.Title)*@
+            </td>
+            <td>
+                <img src="~/images/@item.Image " width="30" />
+                @*@Html.DisplayFor(modelItem => item.Image)*@
+            </td>
+            <td>
+                @item.Date.ToShortDateString()
+                @*@Html.DisplayFor(modelItem => item.Date)*@
+            </td>
+            <td>
+                <a href="/Home/Edit?id=@item.ID">編輯</a>|
+                @*@Html.ActionLink("編輯", "Edit", new { id=item.ID }) |*@
+                @*@Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
+                <a href="/Home/Delete?id=@item.ID" onclick="confirm('確定要刪除嗎?')">刪除</a>
+                @*@Html.ActionLink("刪除", "Delete", new { id = item.ID },onclick="confirm('確定要刪除嗎?')")*@
+            </td>
+        </tr>
+    }
+</table>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script>
+    //$('#pink').addClass('pink');
+    //$('#blue').addClass('blue');
+    //$('#yellow').addClass('yellow');
+    //var btn = document.getElementById("btn")
+    //for (i = 0; i < btn.children().length; i++) {
+    //    btn.children[i].className=btn.children[i].id
+    //}
+
+    for (i = 0; i < $('#btn').children().length; i++) {
+        $('#btn').children()[i].className = $('#btn').children()[i].id;
+    }
+    $('#btn span').click(function (evt) {
+        id = evt.target.id;
+        $('#table1 > tbody > tr:nth-child(2n+1)').removeClass().addClass(id);
+    });
+    //$('#pink').click(function () {
+    //    $('#table1 > tbody > tr:nth-child(2n+1)').removeClass().addClass('pink');
+    //});
+    //$('#blue').click(function () {
+    //    $('#table1 > tbody > tr:nth-child(2n+1)').removeClass().addClass('blue');
+    //});
+    //$('#yellow').click(function () {
+    //    $('#table1 > tbody > tr:nth-child(2n+1)').removeClass().addClass('yellow');
+    //});
+
+//$('#btn span').addClass('pink');
+</script>
+

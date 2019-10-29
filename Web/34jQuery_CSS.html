@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        /*.h1{
+            background-color:gray;
+            color:azure;
+            border:3px solid blue;
+            text-align:center;
+            font-size:30pt;
+        }*/
+
+    </style>
+</head>
+<body>
+    <h1>
+        welcome
+    </h1>
+    <input id="Button1" type="button" value="button" onclick="getH1CSS()" />
+
+    <script src="Scripts/jquery-3.4.1.js"></script>
+    <script>
+    //$('h1').addClass('h1');
+    function getH1CSS() {
+        $('h1').css({
+        'background-color':'gray',
+            'color':'azure',
+            'border':'3px solid blue',
+            'text-align':'center',
+            'font-size':'30pt'
+        });
+        setTimeout(getH1CSS2, 300);
+            }
+
+      $('h1').addClass('h1');
+    function getH1CSS2() {
+        $('h1').css({
+        'background-color':'blue',
+            'color':'azure',
+            'border':'3px solid gray',
+            'text-align':'center',
+            'font-size':'30pt'
+        });
+        setTimeout(getH1CSS, 300);
+    }
+
+
+    </script>
+</body>
+</html>
